@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <h2>{{num}}</h2>
+  <counter @plus="numpls" @mns="nummns" :snum="num"></counter>
+
+</div>
+<script>
+    const counter={
+        template:"<div>" +
+            "<button @click='incre'>+</button>" +
+            "<button @click='decre'>-</button>" +
+            "</div> ",
+        props:["snum"],
+        methods: {
+            incre(){
+                return this.$emit("plus");
+            },
+            decre(){
+                return this.$emit("mns");
+            }
+        }
+    }
+    //全局注册
+    //参数1，组件名称，参数2 具体组件
+    // Vue.component("counter",counter);
+    var app=new Vue({
+        el:"#app",
+        components:{
+            counter:counter
+        },
+        data:{
+            num:0
+        },methods:{
+            numpls(){
+                this.num++;
+            },
+            nummns(){
+                this.num--;
+            }
+        }
+    })
+</script>
+</body>
+</html>

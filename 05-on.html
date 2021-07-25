@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<button @click="num++">jia</button>
+    <button @click="minus">minus</button>
+    <h1>{{num}}</h1>
+    <h2>
+        事件冒泡:<br>
+    </h2>
+    <div style="background-color: lightblue; width: 100px;height: 100px" @click="print('div was clicked')">
+        <button @click.stop="print('btn was clicked')">test</button>
+    </div>
+    <br>阻止默认事件<br>
+    <a href="http://www.baidu.com" @click.prevent="print('点击了链接')">lajibaidu</a>
+</div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            num:1
+        },
+        methods:{
+            minus(){
+                this.num--;
+            },
+            print(str) {
+                console.log(str);
+            }
+        }
+    })
+</script>
+</body>
+</html>

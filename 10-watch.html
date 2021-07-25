@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg">
+<br>
+    <input type="text" v-model="person.name">
+    <input type="text" v-model="person.age"><button @click="person.age++">+</button>
+    <h2>
+        name:{{person.name}},age:{{person.age}}
+    </h2>
+</div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            msg:"silly front",
+            person:{"name":"kkk","age":10}
+        },
+        watch:{
+            msg(newValue,oldValue){
+                console.log("new:"+newValue+" "+"old:"+oldValue)
+            },
+            person:{
+                //deep spy
+                deep:true,
+                handler(obj){
+                    console.log("name:"+obj.name+";age:"+obj.age)
+                }
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

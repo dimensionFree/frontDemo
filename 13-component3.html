@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <my-List :items="lessons"></my-List>
+</div>
+<script>
+    //定义组件
+    const myList={
+        template:'<ul><li v-for="item in items" :key="items.id">{{item.id}}--{{item.name}}</li></ul>',
+        props:{
+            items:{
+                type:Array,
+                default:[]
+            }
+        }
+    }
+    //全局注册
+    //参数1，组件名称，参数2 具体组件
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            msg:"父组件msg内容",
+            lessons:[
+                {"id":1,"name":"php"},
+                {"id":2,"name":"java"},
+                {"id":3,"name":"c++"}
+            ]
+        },
+        components:{
+            myList
+        }
+    })
+</script>
+</body>
+</html>

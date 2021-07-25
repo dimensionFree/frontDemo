@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <Introduce :title="msg"></Introduce>
+</div>
+<script>
+    //定义组件
+    const introduce={
+        template:"<h2>{{title}}</h2>",
+        props:["title"]
+    }
+    //全局注册
+    //参数1，组件名称，参数2 具体组件
+    Vue.component("introduce",introduce);
+    var app=new Vue({
+        el:"#app",
+        data:{
+            msg:"父组件msg内容"
+        }
+    })
+</script>
+</body>
+</html>

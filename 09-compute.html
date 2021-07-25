@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+
+    <h2>
+        your birth is
+        {{new Date(birth).getFullYear()}}--{{new Date(birth).getMonth()+1}}--{{new Date(birth).getDay()}}
+    </h2>
+    <h2>
+        your birth is
+        {{birthday}}
+    </h2>
+</div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            color:"red",
+            birth:616511561815
+        },
+        computed:{
+            birthday(){
+                const date=new Date(this.birth);
+                return date.getFullYear()+"--"+(date.getMonth()+1)+"--"+date.getDay();
+            }
+        }
+    })
+</script>
+</body>
+</html>

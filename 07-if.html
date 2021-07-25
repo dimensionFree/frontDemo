@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    asdifjsapdjfpa
+    <button @click="show=!show">click me </button><br>
+    <h2 v-if="show">
+        mesterous data
+    </h2>
+    <h2 v-show="show">
+        shabi qianduan
+    </h2>
+    <br>
+    <ul>
+        <li v-for="(user,index) in users" v-if="user.gender=='female'" style="background-color: deeppink">
+           {{index}}--{{user.name}}--{{user.age}}--{{user.gender}}
+        </li>
+        <li v-else style="background-color: blue">
+            {{index}}--{{user.name}}--{{user.age}}--{{user.gender}}
+        </li>
+    </ul>
+<ul>
+    <li v-for="(value,key,index) in person">
+        {{index}}--{{key}}--{{value}}
+    </li>
+</ul>
+</div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            show:true,
+            users:[
+                {"name":"idiot","age":13,"gender":"female"},
+                {"name":"ajsfd","age":3,"gender":"male"},
+                {"name":"dontknow","age":111,"gender":"female"},
+                {"name":"dontknow","age":111,"gender":"male"}
+            ],
+            person:{"name":"iIIiII","age":25,"gender":"kami","nationality":"homeland"}
+
+        },
+        methods:{
+            minus(){
+                this.num--;
+            },
+            print(str) {
+                console.log(str);
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            color: white;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <button @click="color='red'">red</button><br>
+    <button @click="color='blue'">blue</button><br>
+    <div :class="{red:bool,blue:!bool}">
+        click btn change clr
+    </div>
+    <button @click="bool=!bool">change clor</button>
+</div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            color:"red",
+            bool:true
+        },
+        methods:{
+            minus(){
+                this.num--;
+            },
+            print(str) {
+                console.log(str);
+            }
+        }
+    })
+</script>
+</body>
+</html>

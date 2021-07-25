@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs test</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+  <counter></counter>
+    <counter></counter>
+    <counter></counter>
+</div>
+<script>
+    const counter={
+        template:"<button @click='num++'>you clicked {{num}} times</button>",
+        data(){
+            return {num:0}
+        }
+    }
+    //全局注册
+    //参数1，组件名称，参数2 具体组件
+    // Vue.component("counter",counter);
+    var app=new Vue({
+        el:"#app",
+        components:{
+            counter:counter
+        }
+    })
+</script>
+</body>
+</html>
